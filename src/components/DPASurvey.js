@@ -42,6 +42,7 @@ export default class DPASurvey extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     this.loadSteps(newValue);
   }
+
   loadSteps(step) {
     let rc = this;
     let qBtns = null;
@@ -56,11 +57,11 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-primary="true" data-size="md" data-disable="undefined" data-label="Start Survey" data-img="" data-img-alt="" data-icon="" data-icon-order="" data-icon-size="" data-shape="undefined" data-aria-label="" data-background-color="primary"></cod-button>
+            <cod-button id="start" variant="primary" size="medium">Start Survey</cod-button>
           </div>
         </div>
         `;
-        shadow.querySelector("cod-button").shadowRoot.querySelector('button').addEventListener("click", (e) => {
+        shadow.querySelector("cod-button[id='start']").addEventListener("click", (e) => {
           this.updateStepStack(step);
           this.setAttribute("data-step", "1");
         });
@@ -73,25 +74,23 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-id="yes" data-label="Yes" data-background-color="primary" data-primary="true" data-img-alt="" data-icon=""></cod-button>
-            <cod-button data-id="no" data-background-color="primary" data-label="No" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="yes" variant="primary">Yes</cod-button>
+            <cod-button id="no" variant="primary">No</cod-button>
           </div>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        qBtns = shadow.querySelectorAll("cod-button[data-id='yes'], cod-button[data-id='no']");
+        qBtns = shadow.querySelectorAll("cod-button[id='yes'], cod-button[id='no']");
         qBtns.forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            if (e.target.getAttribute("data-label") != null) {
-              this.updateStepStack(step);
-              if (e.target.getAttribute("data-label") == "Yes") {
-                rc.answers.push("pass");
-                rc.setAttribute("data-step", "3");
-              } else {
-                rc.setAttribute("data-step", "2");
-              }
+            this.updateStepStack(step);
+            if (e.target.id === "yes") {
+              rc.answers.push("pass");
+              rc.setAttribute("data-step", "3");
+            } else {
+              rc.setAttribute("data-step", "2");
             }
           });
         });
@@ -107,7 +106,7 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="ms-auto">
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
@@ -121,25 +120,23 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-id="yes" data-label="Yes" data-background-color="primary" data-primary="true" data-img-alt="" data-icon=""></cod-button>
-            <cod-button data-id="no" data-background-color="primary" data-label="No" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="yes" variant="primary">Yes</cod-button>
+            <cod-button id="no" variant="primary">No</cod-button>
           </div>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        qBtns = shadow.querySelectorAll("cod-button[data-id='yes'], cod-button[data-id='no']");
+        qBtns = shadow.querySelectorAll("cod-button[id='yes'], cod-button[id='no']");
         qBtns.forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            if (e.target.getAttribute("data-label") != null) {
-              this.updateStepStack(step);
-              if (e.target.getAttribute("data-label") == "Yes") {
-                rc.answers.push("pass");
-                rc.setAttribute("data-step", "4");
-              } else {
-                rc.setAttribute("data-step", "3.5");
-              }
+            this.updateStepStack(step);
+            if (e.target.id === "yes") {
+              rc.answers.push("pass");
+              rc.setAttribute("data-step", "4");
+            } else {
+              rc.setAttribute("data-step", "3.5");
             }
           });
         });
@@ -153,25 +150,23 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-id="yes" data-label="Yes" data-background-color="primary" data-primary="true" data-img-alt="" data-icon=""></cod-button>
-            <cod-button data-id="no" data-background-color="primary" data-label="No" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="yes" variant="primary">Yes</cod-button>
+            <cod-button id="no" variant="primary">No</cod-button>
           </div>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        qBtns = shadow.querySelectorAll("cod-button[data-id='yes'], cod-button[data-id='no']");
+        qBtns = shadow.querySelectorAll("cod-button[id='yes'], cod-button[id='no']");
         qBtns.forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            if (e.target.getAttribute("data-label") != null) {
-              this.updateStepStack(step);
-              if (e.target.getAttribute("data-label") == "Yes") {
-                rc.answers.push("pass");
-                rc.setAttribute("data-step", "4");
-              } else {
-                rc.setAttribute("data-step", "2");
-              }
+            this.updateStepStack(step);
+            if (e.target.id === "yes") {
+              rc.answers.push("pass");
+              rc.setAttribute("data-step", "4");
+            } else {
+              rc.setAttribute("data-step", "2");
             }
           });
         });
@@ -227,25 +222,23 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-id="yes" data-label="Yes" data-background-color="primary" data-primary="true" data-img-alt="" data-icon=""></cod-button>
-            <cod-button data-id="no" data-background-color="primary" data-label="No" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="yes" variant="primary">Yes</cod-button>
+            <cod-button id="no" variant="primary">No</cod-button>
           </div>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        qBtns = shadow.querySelectorAll("cod-button[data-id='yes'], cod-button[data-id='no']");
+        qBtns = shadow.querySelectorAll("cod-button[id='yes'], cod-button[id='no']");
         qBtns.forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            if (e.target.getAttribute("data-label") != null) {
-              this.updateStepStack(step);
-              if (e.target.getAttribute("data-label") == "Yes") {
-                rc.answers.push("pass");
-                rc.setAttribute("data-step", "6");
-              } else {
-                rc.setAttribute("data-step", "5");
-              }
+            this.updateStepStack(step);
+            if (e.target.id === "yes") {
+              rc.answers.push("pass");
+              rc.setAttribute("data-step", "6");
+            } else {
+              rc.setAttribute("data-step", "5");
             }
           });
         });
@@ -261,7 +254,7 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="ms-auto">
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
@@ -275,25 +268,23 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-id="yes" data-label="Yes" data-background-color="primary" data-primary="true" data-img-alt="" data-icon=""></cod-button>
-            <cod-button data-id="no" data-background-color="primary" data-label="No" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="yes" variant="primary">Yes</cod-button>
+            <cod-button id="no" variant="primary">No</cod-button>
           </div>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        qBtns = shadow.querySelectorAll("cod-button[data-id='yes'], cod-button[data-id='no']");
+        qBtns = shadow.querySelectorAll("cod-button[id='yes'], cod-button[id='no']");
         qBtns.forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            if (e.target.getAttribute("data-label") != null) {
-              this.updateStepStack(step);
-              if (e.target.getAttribute("data-label") == "Yes") {
-                rc.answers.push("pass");
-                rc.setAttribute("data-step", "8");
-              } else {
-                rc.setAttribute("data-step", "7");
-              }
+            this.updateStepStack(step);
+            if (e.target.id === "yes") {
+              rc.answers.push("pass");
+              rc.setAttribute("data-step", "8");
+            } else {
+              rc.setAttribute("data-step", "7");
             }
           });
         });
@@ -308,7 +299,7 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="ms-auto">
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
@@ -325,18 +316,18 @@ export default class DPASurvey extends HTMLElement {
             <label for="lenderName" class="form-label">Lender Name</label>
             <input type="text" required class="form-control" id="lenderName" aria-describedby="lenderNameHelp">
             <div id="lenderNameHelp" class="form-text mb-3">The name of the lender that pre-approved the purchase.</div>
-            <cod-button data-id="next" data-background-color="primary" data-label="Next" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="next" variant="primary">Next</cod-button>
           </form>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        const step8Form = shadow.querySelector("form");
-        step8Form.addEventListener("submit", (e) => {
+        const lenderNextBtn = shadow.querySelector("cod-button[id='next']");
+        lenderNextBtn.addEventListener("click", (e) => {
           e.preventDefault();
-          const inputElement = this.appContent.querySelector("input");
-          if (inputElement.validity.valid) {
+          const inputElement = shadow.querySelector("input");
+          if (inputElement.validity.valid && inputElement.value.trim()) {
             this.updateStepStack(step);
             rc.answers.push("pass");
             rc.setAttribute("data-step", "9");
@@ -352,25 +343,23 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-id="yes" data-label="Yes" data-background-color="primary" data-primary="true" data-img-alt="" data-icon=""></cod-button>
-            <cod-button data-id="no" data-background-color="primary" data-label="No" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="yes" variant="primary">Yes</cod-button>
+            <cod-button id="no" variant="primary">No</cod-button>
           </div>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        qBtns = shadow.querySelectorAll("cod-button[data-id='yes'], cod-button[data-id='no']");
+        qBtns = shadow.querySelectorAll("cod-button[id='yes'], cod-button[id='no']");
         qBtns.forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            if (e.target.getAttribute("data-label") != null) {
-              this.updateStepStack(step);
-              if (e.target.getAttribute("data-label") == "Yes") {
-                rc.answers.push("pass");
-                rc.setAttribute("data-step", "10");
-              } else {
-                rc.setAttribute("data-step", "7");
-              }
+            this.updateStepStack(step);
+            if (e.target.id === "yes") {
+              rc.answers.push("pass");
+              rc.setAttribute("data-step", "10");
+            } else {
+              rc.setAttribute("data-step", "7");
             }
           });
         });
@@ -406,18 +395,19 @@ export default class DPASurvey extends HTMLElement {
               <option value="Other">Other</option>
             </select>
             <div id="agencyNameHelp" class="form-text mb-3">The name of the agency that gave you the homebuyer education certificate.</div>
-            <cod-button data-id="next" data-background-color="primary" data-label="Next" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="next" variant="primary">Next</cod-button>
           </form>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        const step10Form = shadow.querySelector("form");
-        step10Form.addEventListener("submit", (e) => {
+        // Attach click event to the Next button instead of form submit
+        const eduNextBtn = shadow.querySelector("cod-button[id='next']");
+        eduNextBtn.addEventListener("click", (e) => {
           e.preventDefault();
-          const select = this.appContent.querySelector("select");
-          if (select.validity.valid) {
+          const select = shadow.querySelector("select");
+          if (select.validity.valid && select.value) {
             this.updateStepStack(step);
             rc.answers.push("pass");
             rc.setAttribute("data-step", "11");
@@ -433,25 +423,23 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-id="yes" data-label="Yes" data-background-color="primary" data-primary="true" data-img-alt="" data-icon=""></cod-button>
-            <cod-button data-id="no" data-background-color="primary" data-label="No" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="yes" variant="primary">Yes</cod-button>
+            <cod-button id="no" variant="primary">No</cod-button>
           </div>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        qBtns = shadow.querySelectorAll("cod-button[data-id='yes'], cod-button[data-id='no']");
+        qBtns = shadow.querySelectorAll("cod-button[id='yes'], cod-button[id='no']");
         qBtns.forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            if (e.target.getAttribute("data-label") != null) {
-              this.updateStepStack(step);
-              if (e.target.getAttribute("data-label") == "Yes") {
-                rc.answers.push("pass");
-                rc.setAttribute("data-step", "12");
-              } else {
-                rc.setAttribute("data-step", "7");
-              }
+            this.updateStepStack(step);
+            if (e.target.id === "yes") {
+              rc.answers.push("pass");
+              rc.setAttribute("data-step", "12");
+            } else {
+              rc.setAttribute("data-step", "7");
             }
           });
         });
@@ -465,25 +453,23 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-id="yes" data-label="Yes" data-background-color="primary" data-primary="true" data-img-alt="" data-icon=""></cod-button>
-            <cod-button data-id="no" data-background-color="primary" data-label="No" data-primary="true" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="yes" variant="primary">Yes</cod-button>
+            <cod-button id="no" variant="primary">No</cod-button>
           </div>
           <div>
-            <cod-button data-id="back" data-label="Back" data-background-color="primary" data-primary="false" data-img-alt="" data-icon=""></cod-button>
+            <cod-button id="back" variant="secondary">Back</cod-button>
           </div>
         </div>
         `;
-        qBtns = shadow.querySelectorAll("cod-button[data-id='yes'], cod-button[data-id='no']");
+        qBtns = shadow.querySelectorAll("cod-button[id='yes'], cod-button[id='no']");
         qBtns.forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            if (e.target.getAttribute("data-label") != null) {
-              this.updateStepStack(step);
-              if (e.target.getAttribute("data-label") == "Yes") {
-                rc.answers.push("pass");
-                rc.setAttribute("data-step", "13");
-              } else {
-                rc.setAttribute("data-step", "7");
-              }
+            this.updateStepStack(step);
+            if (e.target.id === "yes") {
+              rc.answers.push("pass");
+              rc.setAttribute("data-step", "13");
+            } else {
+              rc.setAttribute("data-step", "7");
             }
           });
         });
@@ -499,7 +485,7 @@ export default class DPASurvey extends HTMLElement {
         </div>
         <div class="d-flex">
           <div class="m-auto">
-            <cod-button data-primary="true" data-disable="undefined" data-label="Start Application" data-img="" data-img-alt="" data-icon="" data-icon-order="" data-icon-size="" data-shape="undefined" data-aria-label="" data-background-color="primary" data-link="https://app.smartsheet.com/b/form/d3275c9107234786ae43285233318c6b"></cod-button>
+            <cod-button variant="primary" href="https://app.smartsheet.com/b/form/d3275c9107234786ae43285233318c6b">Start Application</cod-button>
           </div>
         </div>
         `;
@@ -512,7 +498,7 @@ export default class DPASurvey extends HTMLElement {
   }
 
   attachBackButtonEvent(shadow, rc) {
-    const backBtn = shadow.querySelector("cod-button[data-id='back']").shadowRoot.querySelector("button");
+    const backBtn = shadow.querySelector("cod-button[id='back']");
     backBtn.addEventListener("click", (e) => {
       const prevStep = this.stepStack.pop();
       rc.answers.push("back");
