@@ -1,11 +1,11 @@
 {
-  "name": "recycling-challenge",
-  "version": "2.0.0",
+  "name": "dpa-survey",
+  "version": "1.0.1",
   "description": "Short Recycling trivia challenge to teach Detroit residents about how recycling is done in their city.",
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CityOfDetroit/recycling-challenge.git"
+    "url": "https://github.com/CityOfDetroit/dpa-survey.git"
   },
   "keywords": [
     "Recycling",
@@ -14,9 +14,9 @@
     "JS"
   ],
   "bugs": {
-    "url": "https://github.com/CityOfDetroit/recycling-challenge/issues"
+    "url": "https://github.com/CityOfDetroit/dpa-survey/issues"
   },
-  "homepage": "https://github.com/CityOfDetroit/recycling-challenge#readme",
+  "homepage": "https://github.com/CityOfDetroit/dpa-survey#readme",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
@@ -26,7 +26,7 @@
   "author": "Edgar Montes",
   "license": "MIT",
   "dependencies": {
-    "cod-design-system": "^0.1.0"
+    "cod-design-system": ">=3.0.0-alpha.0 <4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
