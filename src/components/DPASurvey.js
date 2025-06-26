@@ -323,11 +323,11 @@ export default class DPASurvey extends HTMLElement {
           </div>
         </div>
         `;
-        const step8Form = shadow.querySelector("form");
-        step8Form.addEventListener("submit", (e) => {
+        const lenderNextBtn = shadow.querySelector("cod-button[id='next']");
+        lenderNextBtn.addEventListener("click", (e) => {
           e.preventDefault();
-          const inputElement = this.appContent.querySelector("input");
-          if (inputElement.validity.valid) {
+          const inputElement = shadow.querySelector("input");
+          if (inputElement.validity.valid && inputElement.value.trim()) {
             this.updateStepStack(step);
             rc.answers.push("pass");
             rc.setAttribute("data-step", "9");
@@ -402,11 +402,12 @@ export default class DPASurvey extends HTMLElement {
           </div>
         </div>
         `;
-        const step10Form = shadow.querySelector("form");
-        step10Form.addEventListener("submit", (e) => {
+        // Attach click event to the Next button instead of form submit
+        const eduNextBtn = shadow.querySelector("cod-button[id='next']");
+        eduNextBtn.addEventListener("click", (e) => {
           e.preventDefault();
-          const select = this.appContent.querySelector("select");
-          if (select.validity.valid) {
+          const select = shadow.querySelector("select");
+          if (select.validity.valid && select.value) {
             this.updateStepStack(step);
             rc.answers.push("pass");
             rc.setAttribute("data-step", "11");
